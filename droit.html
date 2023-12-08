@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Game RGPD</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c35;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #game-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #282c35;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        #codeInput {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #61dafb;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff3b47;
+        }
+
+        #result img {
+            display: block;
+            margin: 0 auto; /* Pour centrer l'image horizontalement */
+            max-width: 100%; /* Ajuster la taille de l'image en fonction de la largeur de son conteneur */
+            height: auto; /* Conserver le rapport hauteur/largeur de l'image */
+            border-radius: 10px;
+        }
+
+        #result img.defeat {
+            max-width: 60%; /* Ajuster la taille de l'image de défaite */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Escape Game RGPD</h1>
+        <p>Protège tes données et trouve le code d'échappement !</p>
+        <p>Entrez le code final :</p>
+        <input type="text" id="codeInput" placeholder="Entrez le code">
+        <button onclick="checkCode()">Valider</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkCode() {
+            var userInput = document.getElementById('codeInput').value;
+            var correctCode = "2232113221"; 
+            var resultContainer = document.getElementById('result');
+
+            if (userInput === correctCode) {
+                resultContainer.innerHTML = "Victoire ! Tu as protégé tes données comme un pro ! 🚀🔐";
+                displayImage('victory.png');
+            } else {
+                resultContainer.innerHTML = "Oh non ! Tu t'es fait hacker ! Voici les bonnes réponses pour protéger tes données :";
+                displayCorrectAnswers();
+                displayImage('defeat.jpg', 'defeat');
+            }
+        }
+
+        function displayCorrectAnswers() {
+            var correctAnswers = [
+                "1. Quand tu partages des infos, sois aussi sélectif que dans le choix de tes playlists.",
+                "2. Pour comprendre les politiques de confidentialité, demande des explications claires comme tu le ferais pour un nouveau jeu vidéo.",
+                "3. La sécurité, c'est comme choisir un super mot de passe qui résiste aux attaques, pas comme partager ses snacks avec tout le monde.",
+                "4. Être informé de manière transparente, c'est comme quand tu demandes à tes potes de te dire la vérité, même si ça pique un peu.",
+                "5. Le droit d'accès, c'est comme avoir le code d'accès à la fête exclusive. Accède à tes données comme un VIP.",
+                "6. Le droit de rectification, c'est comme éditer un post sur les réseaux sociaux. Corrige les erreurs dans tes données comme un pro de l'édition.",
+                "7. Le droit à l'oubli, c'est comme effacer un vieux selfie gênant. Demande la suppression de tes données quand c'est plus cool de les oublier.",
+                "8. S'éduquer sur le RGPD, c'est comme apprendre les nouvelles dans le monde des jeux vidéo. Sois le maître du jeu et protège tes données.",
+                "9. Poser des questions sur la collecte de données, c'est comme demander pourquoi le prof donne autant de devoirs. Sois curieux et pose les bonnes questions.",
+                "10. Protéger tes comptes avec des mesures de sécurité avancées, c'est comme équiper ton personnage dans un jeu vidéo. Sois le héros de ta propre aventure en ligne."
+            ];
+
+            for (var i = 0; i < correctAnswers.length; i++) {
+                document.getElementById('result').innerHTML += "<p>" + correctAnswers[i] + "</p>";
+            }
+        }
+
+        function displayImage(imageSrc, className) {
+            var imageElement = document.createElement('img');
+            imageElement.src = imageSrc;
+            if (className) {
+                imageElement.classList.add(className);
+            }
+            document.getElementById('result').appendChild(imageElement);
+        }
+    </script>
+</body>
+</html>
