@@ -84,17 +84,16 @@
     <script>
         function checkCode() {
             var userInput = document.getElementById('codeInput').value;
-            var correctCode = "123"; 
+            var correctCode = "2232113221"; 
             var resultContainer = document.getElementById('result');
 
             if (userInput === correctCode) {
-                resultContainer.innerHTML = "Victoire ! Tu as protégé tes données comme un pro ! 🚀🔐";
+                resultContainer.innerHTML = "TRIPLE MONSTRE ! Tu as protégé tes données ! 🚀🔐";
                 displayImage('victory.png');
             } else {
-                resultContainer.innerHTML = "Oh non ! Tu t'es fait hacker !";
-                displayImage('defeat.jpg', 'defeat');
-                resultContainer.innerHTML += "<p>Voici les bonnes réponses pour protéger tes données :</p>";
+                resultContainer.innerHTML = "GROSSE GALERE ! Tu t'es fait hacker ! Voici les bonnes réponses pour protéger tes données :";
                 displayCorrectAnswers();
+                displayImage('defeat.jpg', 'defeat');
             }
         }
 
@@ -113,7 +112,7 @@
             ];
 
             for (var i = 0; i < correctAnswers.length; i++) {
-                resultContainer.innerHTML += "<p>" + correctAnswers[i] + "</p>";
+                document.getElementById('result').innerHTML += "<p>" + correctAnswers[i] + "</p>";
             }
         }
 
